@@ -4,15 +4,24 @@
 class Asc < Formula
   desc "App Store Connect CLI — manage apps, versions, and screenshots from your terminal"
   homepage "https://github.com/tddworks/asc-cli"
-  url "https://github.com/tddworks/asc-cli/releases/download/v0.1/asc_v0.1_macOS_universal"
-  version "v0.1"
-  sha256 "e673ce42ae97cce53da1be469f467284bebfc19df6f7a1d3ae9a166895528769"
+  version "v0.1.1"
   license "MIT"
+
+  on_arm do
+    url "https://github.com/tddworks/asc-cli/releases/download/v0.1.1/asc_v0.1.1_macOS_arm64"
+    sha256 "__SHA256_ARM64__"
+  end
+
+  on_intel do
+    url "https://github.com/tddworks/asc-cli/releases/download/v0.1.1/asc_v0.1.1_macOS_x86_64"
+    sha256 "__SHA256_X86__"
+  end
 
   depends_on :macos
 
   def install
-    bin.install "asc_v0.1_macOS_universal" => "asc"
+    binary = Hardware::CPU.arm? ? "asc_v0.1.1_macOS_arm64" : "asc_v0.1.1_macOS_x86_64"
+    bin.install binary => "asc"
   end
 
   test do
