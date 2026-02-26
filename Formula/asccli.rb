@@ -4,23 +4,23 @@
 class Asccli < Formula
   desc "App Store Connect CLI — manage apps, versions, and screenshots from your terminal"
   homepage "https://github.com/tddworks/asc-cli"
-  version "v0.1.9"
+  version "v0.1.20"
   license "MIT"
 
   on_arm do
-    url "https://github.com/tddworks/asc-cli/releases/download/v0.1.9/asc_v0.1.9_macOS_arm64"
-    sha256 "45f0eb7244cf190b0f870aa7432a00084c212dbbadd5af52a4a002af5e17a352"
+    url "https://github.com/tddworks/asc-cli/releases/download/v0.1.20/asc_v0.1.20_macOS_arm64"
+    sha256 "ee163b278e35be26fbb9702ef46418e11d689eb02c4e83b886725f4ce0e21179"
   end
 
   on_intel do
-    url "https://github.com/tddworks/asc-cli/releases/download/v0.1.9/asc_v0.1.9_macOS_x86_64"
-    sha256 "ac7e0cd5fed8f9a3b39af6198eac275f378b193901760725d2703949c81084af"
+    url "https://github.com/tddworks/asc-cli/releases/download/v0.1.20/asc_v0.1.20_macOS_x86_64"
+    sha256 "a2a3bf72784e26bdd67a55f72828f0d97d7a96beb061b9a9b87a71791bb72c28"
   end
 
   depends_on :macos
 
   def install
-    binary = Hardware::CPU.arm? ? "asc_v0.1.9_macOS_arm64" : "asc_v0.1.9_macOS_x86_64"
+    binary = Hardware::CPU.arm? ? "asc_v0.1.20_macOS_arm64" : "asc_v0.1.20_macOS_x86_64"
     bin.install binary => "asc"
   end
 
