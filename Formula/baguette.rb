@@ -4,12 +4,12 @@
 class Baguette < Formula
   desc "Headless iOS Simulator manager + host-side input injection for iOS 26"
   homepage "https://github.com/tddworks/baguette"
-  version "v0.1.0"
+  version "v0.1.1"
   license "Apache-2.0"
 
   on_arm do
-    url "https://github.com/tddworks/baguette/releases/download/v0.1.0/baguette_v0.1.0_macOS_arm64"
-    sha256 "2fa7ce8671c02d19c584fcf42f07a9874e3adf3e7b11eb53cd947acdbd1bb07d"
+    url "https://github.com/tddworks/baguette/releases/download/v0.1.1/baguette_v0.1.1_macOS_arm64.tar.gz"
+    sha256 "b94a08e11aa12face49b8807d27744af75604b19dea5ce70a966ede374c53820"
   end
 
   depends_on :macos
@@ -17,7 +17,13 @@ class Baguette < Formula
   depends_on xcode: ["26.0", :build]
 
   def install
-    bin.install "baguette_v0.1.0_macOS_arm64" => "baguette"
+    # Binary and its SPM resource bundle must sit side-by-side at
+    # runtime — WebRoot resolves the bundle via dladdr from the
+    # executable's directory. Install both into libexec and symlink
+    # the binary into bin.
+    libexec.install "Baguette" => "baguette"
+    libexec.install "Baguette_Baguette.bundle"
+    bin.install_symlink libexec/"baguette"
   end
 
   def caveats
