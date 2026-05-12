@@ -4,12 +4,12 @@
 class Baguette < Formula
   desc "Headless iOS Simulator manager + host-side input injection for iOS 26"
   homepage "https://github.com/tddworks/baguette"
-  version "v0.1.70"
+  version "v0.1.71"
   license "Apache-2.0"
 
   on_arm do
-    url "https://github.com/tddworks/baguette/releases/download/v0.1.70/baguette_v0.1.70_macOS_arm64.tar.gz"
-    sha256 "a56ae19ef01b7f1e6458dff3ea67e3df0e0e05b20c21b90794763c8993d91890"
+    url "https://github.com/tddworks/baguette/releases/download/v0.1.71/baguette_v0.1.71_macOS_arm64.tar.gz"
+    sha256 "b5edfdea722545780f64143bd303e7105926714f002d7f37b3a4d546f188e443"
   end
 
   depends_on :macos
