@@ -1,19 +1,47 @@
 # typed: false
 # frozen_string_literal: true
 
+class ArmBrewRequirement < Requirement
+  fatal true
+
+  satisfy(build_env: false) { Hardware::CPU.arm? }
+
+  def message
+    if Hardware::CPU.in_rosetta2?
+      <<~EOS
+        baguette requires Apple Silicon Homebrew running natively as arm64.
+
+        Your brew process is running under Rosetta 2, usually from Intel
+        Homebrew in /usr/local. Intel Homebrew cannot install baguette.
+
+        Install with native Homebrew instead:
+
+          /opt/homebrew/bin/brew install baguette
+
+        If /opt/homebrew/bin/brew does not exist, install native Homebrew
+        from https://brew.sh, then run the command above.
+      EOS
+    else
+      "baguette supports Apple Silicon Macs only."
+    end
+  end
+
+  def display_s
+    "Apple Silicon Homebrew"
+  end
+end
+
 class Baguette < Formula
   desc "Headless iOS Simulator manager + host-side input injection for iOS 26"
   homepage "https://github.com/tddworks/baguette"
-  version "v0.1.78"
+  version "v0.1.79"
   license "Apache-2.0"
 
-  on_arm do
-    url "https://github.com/tddworks/baguette/releases/download/v0.1.78/baguette_v0.1.78_macOS_arm64.tar.gz"
-    sha256 "e36227589429faca746e7c9e1f2801260b49a5959715dcbd961c5d58e671a1fa"
-  end
+  url "https://github.com/tddworks/baguette/releases/download/v0.1.79/baguette_v0.1.79_macOS_arm64.tar.gz"
+  sha256 "12134e71ba61e8b475f343744abccbc3c63abbb14eefb175c00c28df00ef06f1"
 
   depends_on :macos
-  depends_on arch: :arm64
+  depends_on ArmBrewRequirement
   depends_on xcode: ["26.0", :build]
 
   def install
