@@ -38,7 +38,7 @@ class Baguette < Formula
   license "Apache-2.0"
 
   url "https://github.com/tddworks/baguette/releases/download/v0.1.95/baguette_v0.1.95_macOS_arm64.tar.gz"
-  sha256 "7276b086409b960cdde796fa083ac876f99267404f862d19c5c35eb9c4dd7077"
+  sha256 "c51cdac3e6a21d85f36d4c58e4aaeff9921a1b4c545f98ac25c731041ed7cd69"
 
   depends_on :macos
   depends_on ArmBrewRequirement
