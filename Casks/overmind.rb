@@ -1,6 +1,6 @@
 cask "overmind" do
-  version "0.2.2"
-  sha256 "d9ddfda32c4a2153287d57550685a2e0ef9381729f64853c346492be61b63dbb"
+  version "0.2.3"
+  sha256 "66d93a88e55bd9b871ade175b4aa2fc9e28350c647fb87a3316ea4dac0e3772f"
 
   url "https://github.com/tddworks/Overmind/releases/download/v#{version}/Overmind-#{version}.dmg"
   name "Overmind"
